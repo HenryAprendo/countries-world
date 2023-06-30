@@ -1,3 +1,28 @@
-<p>countries works!</p>
 
-<li *ngFor="let country of countries()">{{country.capital}}</li>
+<section class="px-3 py-4 bg-very-light-gray-background-lm lg:px-0">
+  <div class="w-full grid grid-cols-1 justify-items-center gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ">
+    <article
+      *ngFor="let country of countries()"
+      class="w-80 bg-white-elements-lm pb-5 shadow-md rounded overflow-hidden sm:w-[300px] md:w-64 lg:w-72"
+    >
+      <img class="w-full h-40 object-cover" [src]="country.flags.png" [alt]="country.flags.alt">
+      <div class="p-6">
+        <h2 class="text-lg text-very-dark-blue-text-lm font-bold mb-4">{{country.name.common}}</h2>
+        <div class="space-y-2">
+          <p class="text-sm font-semibold">
+            Population:
+            <span class="font-normal">{{country.population}}</span>
+          </p>
+          <p class="text-sm font-semibold">
+            Region:
+            <span class="font-normal">{{country.region}}</span>
+          </p>
+          <p class="text-sm font-semibold">
+            Capital:
+            <span class="font-normal">{{country.capital}}</span>
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
