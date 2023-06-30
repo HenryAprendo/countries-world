@@ -1,0 +1,25 @@
+
+<article
+  *ngIf="country"
+  [routerLink]="['/detail', country.name.common]"
+  class="w-80 bg-white-elements-lm dark:bg-dark-blue-elements-dm pb-5 shadow-md rounded overflow-hidden sm:w-[300px] md:w-64 lg:w-72"
+>
+  <img class="w-full h-40 object-cover" [src]="country.flags.png" [alt]="country.flags.alt">
+  <div class="p-6">
+    <h2 class="text-lg text-very-dark-blue-text-lm dark:text-white-text-dm font-bold mb-4">{{country.name.common}}</h2>
+    <div class="space-y-2">
+      <p class="text-sm font-semibold text-very-dark-blue-text-lm dark:text-white-text-dm">
+        Population:
+        <span class="font-normal">{{country.population}}</span>
+      </p>
+      <p class="text-sm font-semibold text-very-dark-blue-text-lm dark:text-white-text-dm">
+        Region:
+        <span class="font-normal">{{country.region}}</span>
+      </p>
+      <p class="text-sm font-semibold text-very-dark-blue-text-lm dark:text-white-text-dm">
+        Capital:
+        <span class="font-normal">{{country.capital}}</span>
+      </p>
+    </div>
+  </div>
+</article>
