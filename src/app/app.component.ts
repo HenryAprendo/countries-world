@@ -3,13 +3,17 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { DarkModeService } from './services/dark-mode.service';
 import { Renderer2 } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { CountryService } from './services/country.service';
+import { Country } from './model/country.model';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, HttpClientModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [CountryService]
 })
 export class AppComponent implements OnInit {
 
@@ -17,10 +21,15 @@ export class AppComponent implements OnInit {
 
   private render:Renderer2 = inject(Renderer2);
 
+  private countryService:CountryService = inject(CountryService);
+
   private darkModeActual:string = '';
 
   ngOnInit(): void {
     this.applyModeSelected();
+    this.countryService.getAll().subscribe(data => {
+      console.log(data)
+    });
   }
 
   toogleMode(){
