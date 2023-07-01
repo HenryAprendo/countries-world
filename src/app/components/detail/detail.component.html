@@ -1,12 +1,12 @@
 
 <section class="px-6 py-8 text-sm bg-very-light-gray-background-lm dark:bg-very-dark-blue-background-dm md:h-screen md:flex md:flex-col md:justify-center xl:text-base xl:px-[3%]">
     <div>
-      <button class="px-5 py-2 text-very-dark-blue-text-lm bg-white-elements-lm dark:bg-dark-blue-elements-dm dark:text-white-text-dm shadow-md flex items-center gap-x-3 mb-12">
+      <button (click)="goToBack()" class="px-5 py-2 text-very-dark-blue-text-lm bg-white-elements-lm dark:bg-dark-blue-elements-dm dark:text-white-text-dm shadow-md flex items-center gap-x-3 mb-12">
         <span class="material-icons">keyboard_backspace</span>
         <span>Back</span>
       </button>
     </div>
-    <article class="md:flex md:justify-between md:items-center max-w-7xl" *ngIf="country">
+    <article class="md:flex md:justify-between md:items-center max-w-7xl" *ngIf="country() as country">
         <figure class="w-full md:w-[450px] xl:w-[600px] shrink-0 md:shadow-lg">
             <img class="w-full h-auto object-cover" [src]="country.flags.png" [alt]="country.flags.alt">
         </figure>
