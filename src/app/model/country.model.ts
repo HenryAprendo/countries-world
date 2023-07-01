@@ -21,15 +21,15 @@ export interface Country {
   independent: boolean;
   status: string;
   unMember: boolean;
-  currenciesObj: object;
+  currencies: object;
   currency: string;
   idd: object;
   capital: string[];
   altSpellings: string[];
   region: string;
   subregion: string;
-  langObj: object;
-  languages: string[];
+  languages: object;
+  listLanguages: string[];
   translations: object;
   latlng: string[];
   landlocked: boolean;

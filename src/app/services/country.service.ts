@@ -26,7 +26,40 @@ export class CountryService {
   constructor() { }
 
   getOne(name:string): Observable<Country> {
-    return this.http.get<Country>(`${this.url}/name/${name}`);
+    return this.http.get<Country[]>(`${this.url}/name/${name}`).pipe(
+      map(data => {
+
+        const country = data[0];
+
+        let listLanguages: string[] = [];
+        let nativeName = '';
+        let currency = '';
+
+        if(country.currencies){
+          const nameCurrency:Currency[] = converterObjToArrayValues<Currency>(country.currencies);
+          currency = nameCurrency[0].name;
+        }
+
+        if(country.name.nativeName) {
+          const list = converterObjToArrayValues<Native>(country.name.nativeName);
+          nativeName = list[0].common;
+        }
+
+        if(country.languages) {
+          listLanguages = converterObjToArrayValues<string>(country.languages);
+        }
+
+        const newObj: Country = {
+          ...country,
+          native: nativeName,
+          currency: currency,
+          listLanguages: [...listLanguages],
+        }
+
+        return { ...newObj };
+
+      })
+    )
   }
 
   getAll(): Observable<Country[]> {
@@ -39,18 +72,19 @@ export class CountryService {
           let nativeName = '';
           let currency = '';
 
-          if(country.currenciesObj){
-            const nameCurrency:Currency = converterObjToArrayValues<Currency>(country.currenciesObj)[0];
+          if(country.currencies){
+            const nameCurrency:Currency = converterObjToArrayValues<Currency>(country.currencies)[0];
             currency = nameCurrency.name;
           }
 
           if(country.name.nativeName) {
             const list = converterObjToArrayValues<Native>(country.name.nativeName);
             nativeName = list[0].common;
+            console.log(nativeName)
           }
 
-          if(country.langObj) {
-            listLanguages = converterObjToArrayValues<string>(country.langObj);
+          if(country.languages) {
+            listLanguages = converterObjToArrayValues<string>(country.languages);
           }
 
           const newObj: Country = {

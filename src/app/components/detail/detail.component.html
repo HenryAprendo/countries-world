@@ -3,36 +3,36 @@
     <div>
       <button>Back</button>
     </div>
-    <article class="md:flex md:justify-between md:items-center max-w-7xl">
-        <figure class="w-full md:w-[450px] xl:w-[600px] shrink-0">
-            <img class="w-full h-auto object-cover" src="https://flagcdn.com/w320/de.png" alt="">
+    <article class="md:flex md:justify-between md:items-center max-w-7xl" *ngIf="country">
+        <figure class="w-full md:w-[450px] xl:w-[600px] shrink-0 md:shadow-lg">
+            <img class="w-full h-auto object-cover" [src]="country.flags.png" [alt]="country.flags.alt">
         </figure>
         <section class="mt-6 text-very-dark-blue-text-lm dark:text-white-text-dm md:flex-grow md:pl-[5%] xl:pl-[8%] md:mt-0">
             <div class="w-full xl:flex xl:justify-between xl:items-center">
                 <div>
-                    <h2 class="text-xl font-semibold mb-4 xl:text-3xl">Belgium</h2>
-                    <ul class="font-semibold xl:space-y-3">
+                    <h2 class="text-xl font-semibold mb-4 xl:text-3xl">{{country.name.common}}</h2>
+                    <ul class="font-semibold space-y-2 xl:space-y-3">
                         <li>
-                            Native Name: <span class="font-normal text-dark-gray-input-lm">Belgié</span>
+                            Native Name: <span class="font-normal text-dark-gray-input-lm">{{country.native}}</span>
                         </li>
                         <li>
-                            Population: <span class="font-normal text-dark-gray-input-lm">11.319.511</span>
+                            Population: <span class="font-normal text-dark-gray-input-lm">{{country.population}}</span>
                         </li>
                         <li>
-                            Región: <span class="font-normal text-dark-gray-input-lm">Europe</span>
+                            Región: <span class="font-normal text-dark-gray-input-lm">{{country.region}}</span>
                         </li>
                         <li>
-                            Sub Región: <span class="font-normal text-dark-gray-input-lm">Western Europe</span>
+                            Sub Región: <span class="font-normal text-dark-gray-input-lm">{{country.subregion}}</span>
                         </li>
                         <li>
-                            Capital: <span class="font-normal text-dark-gray-input-lm">Brussels</span>
+                            Capital: <span class="font-normal text-dark-gray-input-lm">{{country.capital}}</span>
                         </li>
                     </ul>
                 </div>
-                <ul class="mt-6 font-semibold xl:space-y-3">
-                    <li>Top Level Domain: <span class="font-normal text-dark-gray-input-lm">.be</span></li>
-                    <li>Currencies: <span class="font-normal text-dark-gray-input-lm">Euro</span></li>
-                    <li>Languages: <span class="font-normal text-dark-gray-input-lm">Dutch, French, German</span></li>
+                <ul class="mt-6 font-semibold space-y-2 xl:space-y-3 md:mt-0">
+                    <li>Top Level Domain: <span class="font-normal text-dark-gray-input-lm">{{country.tld}}</span></li>
+                    <li>Currencies: <span class="font-normal text-dark-gray-input-lm">{{country.currency}}</span></li>
+                    <li>Languages: <span class="mr-2 font-normal text-dark-gray-input-lm" *ngFor="let item of country.listLanguages">{{item}},</span></li>
                 </ul>
             </div>
             <div class="mt-6 xl:flex xl:gap-x-3">

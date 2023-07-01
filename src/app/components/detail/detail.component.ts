@@ -21,15 +21,25 @@ export class DetailComponent implements OnInit {
   private router:Router = inject(Router);
   private countryService: CountryService = inject(CountryService);
 
-  country:WritableSignal<Country> = signal({} as Country);
+  // country:WritableSignal<Country> = signal({} as Country);
+
+  country!:Country;
 
   ngOnInit(): void {
     this.route.paramMap.pipe(
       map(params => params.get('name')!),
       switchMap(name => this.countryService.getOne(name))
     )
-    .subscribe(data => this.country.set(data));
+    .subscribe(data => {
+      this.country = data;
+      console.log(data);
+
+    });
+
+
   }
+
+
 
 }
 
