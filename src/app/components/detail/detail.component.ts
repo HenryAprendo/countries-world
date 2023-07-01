@@ -1,4 +1,4 @@
-import { Component, OnInit, WritableSignal, inject, signal } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,7 +21,7 @@ export class DetailComponent implements OnInit {
   private router:Router = inject(Router);
   private countryService: CountryService = inject(CountryService);
 
-  country:WritableSignal<Country> = signal({} as Country);
+  country:Country | undefined;
 
   ngOnInit(): void {
     this.route.paramMap.pipe(
@@ -29,9 +29,8 @@ export class DetailComponent implements OnInit {
       switchMap(name => this.countryService.getOne(name))
     )
     .subscribe(data => {
-      this.country.set(data);
+      this.country = data;
     });
-
   }
 
   goToBack(){

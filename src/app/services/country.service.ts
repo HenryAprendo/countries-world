@@ -27,81 +27,46 @@ export class CountryService {
 
   getOne(name:string): Observable<Country> {
     return this.http.get<Country[]>(`${this.url}/name/${name}`).pipe(
-      map(data => {
-
-        const country = data[0];
-
-        let listLanguages: string[] = [];
-        let nativeName = '';
-        let currency = '';
-
-        if(country.currencies){
-          const nameCurrency:Currency[] = converterObjToArrayValues<Currency>(country.currencies);
-          currency = nameCurrency[0].name;
-        }
-
-        if(country.name.nativeName) {
-          const list = converterObjToArrayValues<Native>(country.name.nativeName);
-          nativeName = list[0].common;
-        }
-
-        if(country.languages) {
-          listLanguages = converterObjToArrayValues<string>(country.languages);
-        }
-
-        const newObj: Country = {
-          ...country,
-          native: nativeName,
-          currency: currency,
-          listLanguages: [...listLanguages],
-        }
-
-        return { ...newObj };
-
-      })
+      map(data => transformData(data[0]))
     )
   }
 
   getAll(): Observable<Country[]> {
     return this.http.get<Country[]>(`${this.url}/all`).pipe(
-      map( data =>
-
-        data.map(country => {
-
-          let listLanguages: string[] = [];
-          let nativeName = '';
-          let currency = '';
-
-          if(country.currencies){
-            const nameCurrency:Currency = converterObjToArrayValues<Currency>(country.currencies)[0];
-            currency = nameCurrency.name;
-          }
-
-          if(country.name.nativeName) {
-            const list = converterObjToArrayValues<Native>(country.name.nativeName);
-            nativeName = list[0].common;
-            console.log(nativeName)
-          }
-
-          if(country.languages) {
-            listLanguages = converterObjToArrayValues<string>(country.languages);
-          }
-
-          const newObj: Country = {
-            ...country,
-            native: nativeName,
-            currency: currency,
-            languages: [...listLanguages],
-          }
-
-          return { ...newObj };
-
-        })
-      )
+      map( data => data.map(country => transformData(country)) )
     )
   };
 
+}
 
+const transformData = (country:Country): Country => {
+
+  let listLanguages: string[] = [];
+  let nativeName = '';
+  let currency = '';
+
+  if(country.currencies){
+    const nameCurrency:Currency[] = converterObjToArrayValues<Currency>(country.currencies);
+    currency = nameCurrency[0].name;
+  }
+
+  if(country.name.nativeName) {
+    const list = converterObjToArrayValues<Native>(country.name.nativeName);
+    nativeName = list[0].common;
+  }
+
+  if(country.languages) {
+    listLanguages = converterObjToArrayValues<string>(country.languages);
+  }
+
+  const newObj: Country = {
+    ...country,
+    native: nativeName,
+    currency: currency,
+    languages: [...listLanguages],
+  }
+
+  return { ...newObj };
 }
 
 // Utilidades
