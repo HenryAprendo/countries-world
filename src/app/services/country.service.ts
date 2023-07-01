@@ -21,12 +21,16 @@ export class CountryService {
 
   private http:HttpClient = inject(HttpClient);
 
-  private url = 'https://restcountries.com/v3.1/all';
+  private url = 'https://restcountries.com/v3.1';
 
   constructor() { }
 
+  getOne(name:string): Observable<Country> {
+    return this.http.get<Country>(`${this.url}/name/${name}`);
+  }
+
   getAll(): Observable<Country[]> {
-    return this.http.get<Country[]>(this.url).pipe(
+    return this.http.get<Country[]>(`${this.url}/all`).pipe(
       map( data =>
 
         data.map(country => {
