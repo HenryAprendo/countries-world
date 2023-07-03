@@ -1,5 +1,4 @@
 import { Component, OnInit, WritableSignal, inject, signal } from '@angular/core';
-import { toObservable } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { CountryService } from './../../services/country.service';
 import { Country } from './../../model/country.model';

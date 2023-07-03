@@ -1,5 +1,5 @@
 
-<section class="px-6 py-8 text-sm bg-very-light-gray-background-lm dark:bg-very-dark-blue-background-dm md:h-screen md:flex md:flex-col md:justify-center xl:text-base xl:px-[3%]">
+<section class="px-6 py-8 text-sm bg-very-light-gray-background-lm dark:bg-very-dark-blue-background-dm md:flex md:flex-col md:justify-center xl:text-base xl:px-[3%] h-[calc(100vh-64px)]">
     <div>
       <button (click)="goToBack()" class="px-5 py-2 text-very-dark-blue-text-lm bg-white-elements-lm dark:bg-dark-blue-elements-dm dark:text-white-text-dm shadow-md flex items-center gap-x-3 mb-12">
         <span class="material-icons">keyboard_backspace</span>
@@ -40,8 +40,8 @@
             </div>
             <div class="mt-6 xl:flex xl:gap-x-3">
                 <h3 class="font-bold mb-4 xl:mb-0">Border Countries:</h3>
-                <ul class=" bg-very-light-gray-background-lm dark:bg-very-dark-blue-background-dm flex flex-wrap gap-x-3 gap-y-2 text-xs xl:justify-start xl:gap-x-2">
-                    <li class="px-4 py-1 shadow-lg font-medium dark:text-dark-gray-input-lm flex dark:bg-dark-blue-elements-dm items-center" *ngFor="let code of country.borders">
+                <ul class="flex flex-wrap gap-x-3 gap-y-2 text-xs bg-very-light-gray-background-lm dark:bg-very-dark-blue-background-dm xl:justify-start xl:gap-x-2">
+                    <li class="px-4 py-1 shadow-md dark:shadow-lg font-medium text-very-dark-blue-text-lm dark:text-dark-gray-input-lm dark:bg-dark-blue-elements-dm flex items-center hover:cursor-pointer" *ngFor="let code of country.borders">
                         <a [routerLink]="['../',getNameCountry(code)]">{{getNameCountry(code)}}</a>
                     </li>
                 </ul>
