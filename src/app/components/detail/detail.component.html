@@ -40,8 +40,8 @@
             </div>
             <div class="mt-6 xl:flex xl:gap-x-3">
                 <h3 class="font-bold mb-4 xl:mb-0">Border Countries:</h3>
-                <ul class="bg-very-light-gray-background-lm dark:bg-very-dark-blue-background-dm flex justify-between text-xs xl:justify-start xl:gap-x-2">
-                    <li class="px-4 py-1 shadow-md dark:text-dark-gray-input-lm flex items-center" *ngFor="let code of country.borders">
+                <ul class=" bg-very-light-gray-background-lm dark:bg-very-dark-blue-background-dm flex flex-wrap gap-x-3 gap-y-2 text-xs xl:justify-start xl:gap-x-2">
+                    <li class="px-4 py-1 shadow-lg font-medium dark:text-dark-gray-input-lm flex dark:bg-dark-blue-elements-dm items-center" *ngFor="let code of country.borders">
                         <a [routerLink]="['../',getNameCountry(code)]">{{getNameCountry(code)}}</a>
                     </li>
                 </ul>
