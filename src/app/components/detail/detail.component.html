@@ -35,20 +35,14 @@
                 <ul class="mt-6 font-semibold space-y-2 xl:space-y-3 md:mt-0">
                     <li>Top Level Domain: <span class="font-normal text-dark-gray-input-lm">{{country.tld}}</span></li>
                     <li>Currencies: <span class="font-normal text-dark-gray-input-lm">{{country.currency}}</span></li>
-                    <li>Languages: <span class="mr-2 font-normal text-dark-gray-input-lm" *ngFor="let item of country.listLanguages">{{item}},</span></li>
+                    <li *ngIf="country.listLanguages">Languages: <span class="mr-2 font-normal text-dark-gray-input-lm" *ngFor="let item of country.listLanguages">{{item}},</span></li>
                 </ul>
             </div>
             <div class="mt-6 xl:flex xl:gap-x-3">
                 <h3 class="font-bold mb-4 xl:mb-0">Border Countries:</h3>
                 <ul class="bg-very-light-gray-background-lm dark:bg-very-dark-blue-background-dm flex justify-between text-xs xl:justify-start xl:gap-x-2">
-                    <li class="px-4 py-1 shadow-md dark:text-dark-gray-input-lm">
-                        <a>France</a>
-                    </li>
-                    <li class="px-4 py-1 shadow dark:text-dark-gray-input-lm">
-                        <a>Germany</a>
-                    </li>
-                    <li class="px-4 py-1 shadow dark:text-dark-gray-input-lm">
-                        <a>Netherlands</a>
+                    <li class="px-4 py-1 shadow-md dark:text-dark-gray-input-lm flex items-center" *ngFor="let code of country.borders">
+                        <a [routerLink]="['../',getNameCountry(code)]">{{getNameCountry(code)}}</a>
                     </li>
                 </ul>
             </div>

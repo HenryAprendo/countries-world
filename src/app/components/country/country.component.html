@@ -2,7 +2,7 @@
 <article
   *ngIf="country"
   [routerLink]="['/detail', country.name.common]"
-  class="w-80 bg-white-elements-lm dark:bg-dark-blue-elements-dm pb-5 shadow-md rounded overflow-hidden sm:w-[300px] md:w-64 lg:w-72"
+  class="w-80 bg-white-elements-lm dark:bg-dark-blue-elements-dm pb-5 shadow-md rounded overflow-hidden hover:cursor-pointer sm:w-[300px] md:w-64 lg:w-72"
 >
   <img class="w-full h-40 object-cover" [src]="country.flags.png" [alt]="country.flags.alt">
   <div class="p-6">
