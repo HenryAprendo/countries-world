@@ -1,10 +1,19 @@
 
 <section class="px-3 py-8 bg-very-light-gray-background-lm dark:bg-very-dark-blue-background-dm lg:px-0">
+
+  <div>
+    <input type="search" #search (input)="filtering(search.value)" >
+  </div>
+
   <div class="w-full grid grid-cols-1 justify-items-center gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ">
-    <app-country
+    <!-- <app-country
       *ngFor="let country of countries()"
       [country]="country"
-    />
+    /> -->
+    <app-country
+    *ngFor="let country of countriesFiltered()"
+    [country]="country"
+  />
   </div>
 </section>
 

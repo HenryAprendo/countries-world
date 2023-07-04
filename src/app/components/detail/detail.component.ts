@@ -34,6 +34,11 @@ export class DetailComponent implements OnInit {
       this.country = data;
     });
 
+    // resolver
+    // this.route.data.subscribe(data => {
+    //   this.country = data['country'];
+    // })
+
   }
 
   goToBack(){

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { DetailComponent } from './components/detail/detail.component';
+import {countryDetailResolver} from './resolvers/country-detail.resolver';
+
 
 export const routes: Routes = [
   {
@@ -13,6 +14,9 @@ export const routes: Routes = [
   },
   {
     path: 'detail/:name',
-    loadComponent: () => import('./components/detail/detail.component').then(m => m.DetailComponent)
+    loadComponent: () => import('./components/detail/detail.component').then(m => m.DetailComponent),
+    // resolve: {
+    //   country: countryDetailResolver
+    // },
   }
 ];
