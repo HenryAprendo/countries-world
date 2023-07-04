@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CountryComponent } from './../country/country.component';
 import { CodeService } from './../../services/code.service';
 import { FormsModule } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, of, tap } from 'rxjs';
 
 
 @Component({
@@ -22,18 +21,6 @@ export class CountriesComponent implements OnInit {
   private codeService:CodeService = inject(CodeService);
 
   private countryService:CountryService = inject(CountryService);
-
-  // countries: WritableSignal<Country[]> = signal([]);
-
-  // countriesFiltered:Country[] = [];
-
-  // ngOnInit(): void {
-  //   this.countryService.getAll().subscribe(data => {
-  //     this.countries.set(data);
-  //     data.forEach(c => this.codeService.setKeyValue(c.cca3, c.name.common));
-
-  //   });
-  // }
 
   private countries:Country[]  = [];
 

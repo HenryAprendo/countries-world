@@ -2,26 +2,27 @@
 <section class="py-8 px-3 bg-very-light-gray-background-lm dark:bg-very-dark-blue-background-dm lg:pl-[calc((100%-1280px)/2)] lg:pr-[calc((100%-1280px)/2)] ">
 
   <div class="w-full flex flex-col gap-y-3 mb-8 md:flex-row md:justify-between ">
-    <div class="w-full text-dark-gray-input-lm bg-white-elements-lm dark:bg-dark-blue-elements-dm shadow-md px-8 flex items-center gap-x-4 max-w-3xl lg:max-w-lg">
+    <div class="w-full mb-7 text-dark-gray-input-lm bg-white-elements-lm rounded dark:bg-dark-blue-elements-dm shadow-md px-8 flex items-center gap-x-4 max-w-3xl lg:max-w-lg lg:mb-0">
       <span class="material-icons">
         search
       </span>
       <input
-      type="search"
-      #search
-      placeholder="Search for a country"
-      (input)="filtering(search.value)"
-      class="h-12 outline-none px-4 py-3 bg-white-elements-lm dark:bg-dark-blue-elements-dm  w-full" >
+        type="search"
+        #search
+        placeholder="Search for a country"
+        (input)="filtering(search.value)"
+        class="h-12 outline-none px-4 py-3 bg-white-elements-lm dark:bg-dark-blue-elements-dm w-full"
+      >
     </div>
 
     <select name="" id=""></select>
   </div>
 
-  <div class="w-full grid grid-cols-1 justify-items-center gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ">
+  <div class="w-full grid grid-cols-1 justify-items-center gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ">
     <app-country
-    *ngFor="let country of countriesFiltered()"
-    [country]="country"
-  />
+      *ngFor="let country of countriesFiltered()"
+      [country]="country"
+    />
   </div>
 </section>
 
