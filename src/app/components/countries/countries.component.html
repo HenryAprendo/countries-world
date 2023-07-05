@@ -16,18 +16,21 @@
     </div>
 
     <div class="relative w-48 text-base">
-        <div class="flex justify-evenly items-center gap-x-6 h-12 w-full rounded shadow-md text-very-dark-blue-text-lm dark:text-white-text-dm bg-white-elements-lm dark:bg-dark-blue-elements-dm">
+        <div (click)="toggleMenuOption()" class="flex justify-evenly items-center gap-x-6 h-12 w-full rounded shadow-md text-very-dark-blue-text-lm dark:text-white-text-dm bg-white-elements-lm dark:bg-dark-blue-elements-dm hover:cursor-pointer">
           <h3 class="m-2">Filter by country</h3>
-          <span class="material-icons">
-            keyboard_arrow_down
-          </span>
+          <button class="flex items-center">
+            <span class="material-icons" *ngIf="!menuOptionRegion" >
+              keyboard_arrow_down
+            </span>
+            <span class="material-icons" *ngIf="menuOptionRegion">
+              keyboard_arrow_up
+            </span>
+          </button>
         </div>
-        <ul class="absolute hover:cursor-pointer top-[52px] w-48 p-3 space-y-1 rounded shadow-md text-very-dark-blue-text-lm dark:text-white-text-dm bg-white-elements-lm dark:bg-dark-blue-elements-dm z-10">
-          <li>Africa</li>
-          <li>America</li>
-          <li>Asia</li>
-          <li>Europa</li>
-          <li>Oceania</li>
+        <ul *ngIf="menuOptionRegion" class="absolute hover:cursor-pointer top-[52px] w-48 p-3 space-y-1 rounded shadow-md text-very-dark-blue-text-lm dark:text-white-text-dm bg-white-elements-lm dark:bg-dark-blue-elements-dm z-10">
+          <li
+            *ngFor="let region of regionList"
+            (click)="filterByRegion(region)" [ngClass]="region.id === selectedId ? 'border pl-2 rounded-md' : '' " >{{region.name}}</li>
         </ul>
     </div>
   </div>

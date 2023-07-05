@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CountryComponent } from './../country/country.component';
 import { CodeService } from './../../services/code.service';
 import { FormsModule } from '@angular/forms';
+import { regions, Region } from './../../data/region';
 
 
 @Component({
@@ -26,6 +27,12 @@ export class CountriesComponent implements OnInit {
 
   countriesFiltered:WritableSignal<Country[]> = signal([]);
 
+  regionList = regions.slice();
+
+  menuOptionRegion = false;
+
+  selectedId = 0;
+
   ngOnInit(): void {
     this.countryService.getAll().subscribe(data => {
       this.countries = data;
@@ -40,6 +47,17 @@ export class CountriesComponent implements OnInit {
       .startsWith(text.toLowerCase()));
 
     this.countriesFiltered.set(dataFiltered);
+  }
+
+  filterByRegion(region:Region) {
+    let dataFiltered = this.countries.filter(country => country.region.toLowerCase() === region.name.toLowerCase());
+    this.countriesFiltered.set(dataFiltered);
+    this.selectedId = region.id;
+    this.toggleMenuOption();
+  }
+
+  toggleMenuOption(){
+    this.menuOptionRegion = !this.menuOptionRegion;
   }
 
 
