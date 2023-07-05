@@ -1,7 +1,7 @@
 
 <section class="py-8 px-3 bg-very-light-gray-background-lm dark:bg-very-dark-blue-background-dm lg:pl-[calc((100%-1280px)/2)] lg:pr-[calc((100%-1280px)/2)] ">
 
-  <div class="w-full flex flex-col gap-y-3 mb-8 md:flex-row md:justify-between ">
+  <div class="w-full flex flex-col gap-y-3 mb-10 md:flex-row md:justify-between ">
     <div class="w-full mb-7 text-dark-gray-input-lm bg-white-elements-lm rounded dark:bg-dark-blue-elements-dm shadow-md px-8 flex items-center gap-x-4 max-w-3xl lg:max-w-lg lg:mb-0">
       <span class="material-icons">
         search
@@ -15,7 +15,21 @@
       >
     </div>
 
-    <select name="" id=""></select>
+    <div class="relative w-48 text-base">
+        <div class="flex justify-evenly items-center gap-x-6 h-12 w-full rounded shadow-md text-very-dark-blue-text-lm dark:text-white-text-dm bg-white-elements-lm dark:bg-dark-blue-elements-dm">
+          <h3 class="m-2">Filter by country</h3>
+          <span class="material-icons">
+            keyboard_arrow_down
+          </span>
+        </div>
+        <ul class="absolute hover:cursor-pointer top-[52px] w-48 p-3 space-y-1 rounded shadow-md text-very-dark-blue-text-lm dark:text-white-text-dm bg-white-elements-lm dark:bg-dark-blue-elements-dm z-10">
+          <li>Africa</li>
+          <li>America</li>
+          <li>Asia</li>
+          <li>Europa</li>
+          <li>Oceania</li>
+        </ul>
+    </div>
   </div>
 
   <div class="w-full grid grid-cols-1 justify-items-center gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ">
