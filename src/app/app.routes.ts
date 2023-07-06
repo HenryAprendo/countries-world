@@ -15,8 +15,8 @@ export const routes: Routes = [
   {
     path: 'detail/:name',
     loadComponent: () => import('./components/detail/detail.component').then(m => m.DetailComponent),
-    // resolve: {
-    //   country: countryDetailResolver
-    // },
+    resolve: {
+      country: countryDetailResolver
+    },
   }
 ];

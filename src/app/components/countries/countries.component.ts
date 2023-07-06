@@ -2,7 +2,6 @@ import { Component, OnInit, WritableSignal, inject, signal } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { CountryService } from './../../services/country.service';
 import { Country } from './../../model/country.model';
-import { HttpClientModule } from '@angular/common/http';
 import { CountryComponent } from './../country/country.component';
 import { CodeService } from './../../services/code.service';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +14,6 @@ import { myInsertRemove } from './../../animations/insert-remove';
   standalone: true,
   imports: [
     CommonModule,
-    HttpClientModule,
     CountryComponent,
     FormsModule,
   ],
