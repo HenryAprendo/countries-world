@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Country } from './../model/country.model';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 interface Native {
   official: string;
@@ -27,17 +27,30 @@ export class CountryService {
 
   getOne(name:string): Observable<Country> {
     return this.http.get<Country[]>(`${this.url}/name/${name}`).pipe(
-      map(data => transformData(data[0]))
+      map(data => transformData(data[0])),
+      catchError(this.handleError)
     )
   }
 
   getAll(): Observable<Country[]> {
     return this.http.get<Country[]>(`${this.url}/all`).pipe(
-      map( data => data.map(country => transformData(country)) )
+      map( data => data.map(country => transformData(country)) ),
+      catchError(this.handleError)
     )
   };
 
+
+  private handleError(error:HttpErrorResponse){
+    error.status === 0
+      ? console.error('An error ocurred:', error.error)
+      : console.error(`Backend returned code ${error.status}, body was: ${error.statusText}`);
+
+    return throwError(() => new Error('Something bad happened; please try again later'));
+  }
+
+
 }
+
 
 const transformData = (country:Country): Country => {
 

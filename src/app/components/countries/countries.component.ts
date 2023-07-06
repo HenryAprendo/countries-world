@@ -39,10 +39,15 @@ export class CountriesComponent implements OnInit {
   selectedId = 0;
 
   ngOnInit(): void {
-    this.countryService.getAll().subscribe(data => {
-      this.countries = data;
-      this.countriesFiltered.set(data.slice());
-      data.forEach(c => this.codeService.setKeyValue(c.cca3, c.name.common));
+    this.countryService.getAll().subscribe({
+      next: data => {
+        this.countries = data;
+        this.countriesFiltered.set(data.slice());
+        data.forEach(c => this.codeService.setKeyValue(c.cca3, c.name.common));
+      },
+      error: (err:Error) => {
+        console.log(err.message);
+      }
     });
   }
 

@@ -1,6 +1,6 @@
 import { ResolveFn, ActivatedRouteSnapshot, Router} from '@angular/router';
 import { EMPTY, of } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, map } from 'rxjs/operators';
 import { CountryService } from './../services/country.service';
 import { Country } from './../model/country.model';
 import { inject } from '@angular/core';
