@@ -10,7 +10,7 @@ export const routes: Routes = [
   },
   {
     path: 'countries',
-    loadComponent: () => import('./components/countries/countries.component').then(m => m.CountriesComponent)
+    loadComponent: () => import('./components/countries/countries.component').then(m => m.CountriesComponent),
   },
   {
     path: 'detail/:name',

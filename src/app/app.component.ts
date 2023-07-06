@@ -4,10 +4,11 @@ import { RouterOutlet } from '@angular/router';
 import { DarkModeService } from './services/dark-mode.service';
 import { Renderer2 } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet,],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

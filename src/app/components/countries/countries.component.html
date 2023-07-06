@@ -36,7 +36,7 @@
   </div>
 
   <div class="w-full grid grid-cols-1 justify-items-center gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ">
-    <app-country
+    <app-country @myInsertRemoveTrigger
       *ngFor="let country of countriesFiltered()"
       [country]="country"
     />

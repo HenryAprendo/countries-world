@@ -7,15 +7,22 @@ import { CountryComponent } from './../country/country.component';
 import { CodeService } from './../../services/code.service';
 import { FormsModule } from '@angular/forms';
 import { regions, Region } from './../../data/region';
+import { myInsertRemove } from './../../animations/insert-remove';
 
 
 @Component({
   selector: 'app-countries',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, CountryComponent, FormsModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    CountryComponent,
+    FormsModule,
+  ],
   templateUrl: './countries.component.html',
   styles: [],
-  providers: [CountryService]
+  providers: [CountryService],
+  animations: [myInsertRemove]
 })
 export class CountriesComponent implements OnInit {
 
