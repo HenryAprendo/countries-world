@@ -1,4 +1,4 @@
-import { Component, OnInit, WritableSignal, inject, signal } from '@angular/core';
+import { Component, OnInit, WritableSignal, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CountryService } from './../../services/country.service';
 import { Country } from './../../model/country.model';
@@ -38,6 +38,8 @@ export class CountriesComponent implements OnInit {
 
   selectedId = 0;
 
+  isCountryFound = true;
+
   ngOnInit(): void {
     this.countryService.getAll().subscribe({
       next: data => {
@@ -57,6 +59,8 @@ export class CountriesComponent implements OnInit {
       .startsWith(text.toLowerCase()));
 
     this.countriesFiltered.set(dataFiltered);
+
+    this.isCountryFound = dataFiltered.length > 0 ? true : false;
   }
 
   filterByRegion(region:Region) {

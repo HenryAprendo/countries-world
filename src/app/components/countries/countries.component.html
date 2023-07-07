@@ -35,14 +35,20 @@
     </div>
   </div>
 
-  <div class="w-full grid grid-cols-1 justify-items-center gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ">
-    <app-country @myInsertRemoveTrigger
-      *ngFor="let country of countriesFiltered()"
-      [country]="country"
-    />
-  </div>
+  <ng-container *ngIf="isCountryFound; else noResults">
+    <div class="w-full grid grid-cols-1 justify-items-center gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ">
+      <app-country @myInsertRemoveTrigger
+        *ngFor="let country of countriesFiltered()"
+        [country]="country"
+      />
+    </div>
+  </ng-container>
 </section>
 
+
+<ng-template #noResults>
+  <p class="text-lg text-very-dark-blue-text-lm dark:text-white-text-dm">There are no results for the search.</p>
+</ng-template>
 
 
 
