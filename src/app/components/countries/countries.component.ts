@@ -40,6 +40,9 @@ export class CountriesComponent implements OnInit {
 
   isCountryFound = true;
 
+  messageError = '';
+  showError = false;
+
   ngOnInit(): void {
     this.countryService.getAll().subscribe({
       next: data => {
@@ -48,7 +51,9 @@ export class CountriesComponent implements OnInit {
         data.forEach(c => this.codeService.setKeyValue(c.cca3, c.name.common));
       },
       error: (err:Error) => {
-        console.log(err.message);
+        this.messageError = err.message;
+        this.onShowError();
+
       }
     });
   }
@@ -72,6 +77,10 @@ export class CountriesComponent implements OnInit {
 
   toggleMenuOption(){
     this.menuOptionRegion = !this.menuOptionRegion;
+  }
+
+  onShowError(){
+    this.showError = !this.showError;
   }
 
 

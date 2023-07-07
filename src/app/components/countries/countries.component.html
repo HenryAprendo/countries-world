@@ -45,10 +45,29 @@
   </ng-container>
 </section>
 
-
 <ng-template #noResults>
   <p class="text-lg text-very-dark-blue-text-lm dark:text-white-text-dm">There are no results for the search.</p>
 </ng-template>
+
+<!-- Mostrando cuando hay un error en la respuesta http -->
+<div *ngIf="showError" class="fixed top-[calc(100vh/2-120px)] left-[calc(100vw/2-160px)] h-80 w-80 rounded-lg shadow-xl text-white-text-dm bg-dark-blue-elements-dm">
+  <div class="w-full h-full text-center p-5 flex flex-col justify-center items-center space-x-2">
+    <p class="text-4xl font-bold">Oops</p>
+    <span class="material-icons my-4 text-3xl">error</span>
+    <p class="text-2xl font-bold ">{{messageError}}</p>
+    <span (click)="onShowError()" class="material-icons mt-4 p-2 text-white-elements-lm text-4xl shadow-lg hover:cursor-pointer hover:scale-150 ">cancel</span>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 
 

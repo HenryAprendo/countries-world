@@ -33,7 +33,7 @@ export class CountryService {
   }
 
   getAll(): Observable<Country[]> {
-    return this.http.get<Country[]>(`${this.url}/all`).pipe(
+    return this.http.get<Country[]>(`${this.url}/all*`).pipe(
       map( data => data.map(country => transformData(country)) ),
       catchError(this.handleError)
     )
@@ -41,11 +41,12 @@ export class CountryService {
 
 
   private handleError(error:HttpErrorResponse){
+
     error.status === 0
       ? console.error('An error ocurred:', error.error)
       : console.error(`Backend returned code ${error.status}, body was: ${error.statusText}`);
 
-    return throwError(() => new Error('Something bad happened; please try again later'));
+    return throwError(() => new Error(`Something bad happened; please try again later.`));
   }
 
 
