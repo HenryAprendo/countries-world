@@ -50,7 +50,7 @@
 </ng-template>
 
 <!-- Mostrando cuando hay un error en la respuesta http -->
-<div *ngIf="showError" class="fixed top-[calc(100vh/2-120px)] left-[calc(100vw/2-160px)] h-80 w-80 rounded-lg shadow-xl text-white-text-dm bg-dark-blue-elements-dm">
+<div *ngIf="showError" [@flyInOut]="'in'" class="fixed top-[calc(100vh/2-120px)] left-[calc(100vw/2-160px)] h-80 w-80 rounded-lg shadow-xl text-white-text-dm bg-dark-blue-elements-dm">
   <div class="w-full h-full text-center p-5 flex flex-col justify-center items-center space-x-2">
     <p class="text-4xl font-bold">Oops</p>
     <span class="material-icons my-4 text-3xl">error</span>

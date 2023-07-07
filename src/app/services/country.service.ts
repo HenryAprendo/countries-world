@@ -33,7 +33,7 @@ export class CountryService {
   }
 
   getAll(): Observable<Country[]> {
-    return this.http.get<Country[]>(`${this.url}/all*`).pipe(
+    return this.http.get<Country[]>(`${this.url}/all`).pipe(
       map( data => data.map(country => transformData(country)) ),
       catchError(this.handleError)
     )

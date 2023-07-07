@@ -7,6 +7,7 @@ import { CodeService } from './../../services/code.service';
 import { FormsModule } from '@angular/forms';
 import { regions, Region } from './../../data/region';
 import { myInsertRemove } from './../../animations/insert-remove';
+import { flyInOut } from './../../animations/fly-in-out';
 
 
 @Component({
@@ -20,7 +21,7 @@ import { myInsertRemove } from './../../animations/insert-remove';
   templateUrl: './countries.component.html',
   styles: [],
   providers: [CountryService],
-  animations: [myInsertRemove]
+  animations: [myInsertRemove, flyInOut]
 })
 export class CountriesComponent implements OnInit {
 
